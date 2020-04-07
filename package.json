@@ -1,0 +1,30 @@
+{
+  "name": "test-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "http-server": "^0.12.1",
+    "react": "npm:@pika/react@^16.13.1",
+    "react-dom": "npm:@pika/react-dom@^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "babel-cli": "^6.26.0",
+    "snowpack": "^1.6.0",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "build-frontend-ts": "npx tsc --build tsconfig.json",
+    "watch-frontend-ts": "npx tsc --build tsconfig.json -w",
+    "snowpack": "npx snowpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
