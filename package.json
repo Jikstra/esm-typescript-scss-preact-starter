@@ -20,10 +20,14 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
+    "dev-server": "http-server ./dist/frontend",
+    "build-frontend": "npm run build-frontend-static && npm run build-frontend-ts",
+    "build-frontend-static": "mkdir -p ./dist/frontend && cp -r ./static/* ./dist/frontend/",
     "build-frontend-ts": "npx tsc --build tsconfig.json",
     "watch-frontend-ts": "npx tsc --build tsconfig.json -w",
     "snowpack": "npx snowpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "first-start": "npx snowpack && npm run build-frontend && npm run dev-server"
   },
   "author": "",
   "license": "ISC"
