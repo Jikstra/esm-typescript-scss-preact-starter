@@ -1,5 +1,5 @@
-import * as React from "/web_modules/react.js";
+import { h, Component, render } from "preact";
 
-export interface HelloProps { compiler: string; framework: string; }
-
-export const Hello = (props: HelloProps) => <h1>Hello from {props.compiler} and {props.framework}!</h1>;
+export default function Hello() {
+    return <h1>Test2</h1>
+}

@@ -5,26 +5,21 @@
   "main": "index.js",
   "dependencies": {
     "http-server": "^0.12.1",
-    "react": "npm:@pika/react@^16.13.1",
-    "react-dom": "npm:@pika/react-dom@^16.13.1"
+    "preact": "^10.4.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-typescript": "^7.9.0",
-    "@types/react": "^16.9.32",
-    "@types/react-dom": "^16.9.6",
-    "babel-cli": "^6.26.0",
+    "@magic-works/ttypescript-browser-like-import-transformer": "^2.0.2",
     "snowpack": "^1.6.0",
+    "ttypescript": "^1.5.10",
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "dev-server": "http-server ./dist/frontend",
-    "build-frontend": "npm run build-frontend-static && npm run build-frontend-ts",
-    "build-frontend-static": "mkdir -p ./dist/frontend && cp -r ./static/* ./dist/frontend/",
-    "build-frontend-ts": "npx tsc --build tsconfig.json",
-    "watch-frontend-ts": "npx tsc --build tsconfig.json -w",
+    "serve": "http-server ./dist",
+    "clean": "rm -rf ./dist/",
+    "build": "npm run build:static && npm run build:ts",
+    "build:static": "mkdir -p ./dist && cp -r ./static/* ./dist",
+    "build:ts": "npx ttsc --build tsconfig.json",
+    "watch-ts": "npx ttsc --build tsconfig.json -w",
     "snowpack": "npx snowpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "first-start": "npx snowpack && npm run build-frontend && npm run dev-server"

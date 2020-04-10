@@ -1,9 +1,6 @@
-import * as React from "/web_modules/react.js";
-import * as ReactDOM from "/web_modules/react-dom.js";
+import { h, Component, render } from "preact";
 
-import { Hello } from "./components/Hello.js";
+import Hello from './components/Hello'
 
-ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
-    document.getElementById("example")
-);
+render(<Hello/>, document.getElementById("app"));
+

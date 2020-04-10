@@ -1,5 +1,5 @@
 module.exports = {
   "installOptions": {
-    "dest": "dist/frontend/web_modules",
+    "dest": "./dist/web_modules",
   },
 }
