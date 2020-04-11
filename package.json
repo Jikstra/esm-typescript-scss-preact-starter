@@ -19,8 +19,8 @@
   "scripts": {
     "serve": "http-server ./dist",
     "clean": "rm -rf ./dist",
-    "build": "npm run build:copy-dependencies && npm run build:static && npm run build:ts && npm run build:scss",
-    "build:copy-dependencies": "./scripts/copy-esm-dependencies.sh",
+    "build": "npm run build:web-modules && npm run build:static && npm run build:ts && npm run build:scss",
+    "build:web-modules": "node ./bin/install-web-modules.js ./dist/js/web_modules preact ",
     "build:static": "node ./bin/copy.js ./sources/static ./dist/",
     "build:ts": "npm run build:ts:ts && npm run build:ts:copy-sources",
     "build:ts:ts": "npx ttsc --build tsconfig.json", 
@@ -32,8 +32,7 @@
     "watch:ts:copy-sources": "npm run build:ts:copy-sources -- -w",
     "watch:static": "npm run build:static -- -w",
     "watch:scss": "npm run build:scss -- -w -r",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "first-start": "npx snowpack && npm run build-frontend && npm run dev-server"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"
