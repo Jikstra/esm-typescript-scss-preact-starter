@@ -3,27 +3,35 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "http-server": "^0.12.1",
     "preact": "^10.4.0"
   },
   "devDependencies": {
     "@magic-works/ttypescript-browser-like-import-transformer": "^2.0.2",
+    "fs-extra": "^9.0.0",
+    "glob-watcher": "^5.0.3",
+    "node-sass": "^4.13.1",
     "ttypescript": "^1.5.10",
     "typescript": "^3.8.3"
   },
   "scripts": {
     "serve": "http-server ./dist",
     "clean": "rm -rf ./dist",
-
     "build": "npm run build:copy-dependencies && npm run build:static && npm run build:ts && npm run build:scss",
     "build:copy-dependencies": "./scripts/copy-esm-dependencies.sh",
-    "build:static": "mkdir -p ./dist && cp -r ./sources/static/* ./dist",
-    "build:ts": "npx ttsc --build tsconfig.json && cp -r ./sources/ts/. ./dist/js",
+    "build:static": "node ./bin/copy.js ./sources/static ./dist/",
+    "build:ts": "npm run build:ts:ts && npm run build:ts:copy-sources",
+    "build:ts:ts": "npx ttsc --build tsconfig.json", 
+    "build:ts:copy-sources": "node ./bin/copy.js ./sources/ts ./dist/js",
     "build:scss": "npx node-sass ./sources/scss/manifest.scss dist/css/main.css --output-style compressed",
-    
-    "watch-ts": "npx ttsc --build tsconfig.json -w",
-    
+    "watch": "npm run watch:ts & npm run watch:scss & npm run watch:static",
+    "watch:ts": "npm run watch:ts:ts & npm run watch:ts:copy-sources",
+    "watch:ts:ts": "npm run build:ts:ts -- -w --preserveWatchOutput",
+    "watch:ts:copy-sources": "npm run build:ts:copy-sources -- -w",
+    "watch:static": "npm run build:static -- -w",
+    "watch:scss": "npm run build:scss -- -w -r",
     "test": "echo \"Error: no test specified\" && exit 1",
     "first-start": "npx snowpack && npm run build-frontend && npm run dev-server"
   },
