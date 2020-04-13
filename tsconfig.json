@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": "./sources/ts",
-    "outDir": "./dist/js",
+    "outDir": "./dist/js/app/",
 
     // Compile to be compatible with ESM/snowpack compatible 
     "target": "es2017",
@@ -15,12 +15,12 @@
 
     // Enable source maps for debugging  
     "sourceMap": true,
-    "sourceRoot": "/js/",
+    "sourceRoot": "/js/app/",
     "inlineSources": true,
 
     "composite": true,
     "incremental": true,
-    "tsBuildInfoFile": "./dist/js/.tsbuildinfo",
+    "tsBuildInfoFile": "./dist/js/app/.tsbuildinfo",
 
     "plugins": [
       // Better integration of snowpack/esm modules
