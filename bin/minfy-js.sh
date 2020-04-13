@@ -7,7 +7,18 @@ function minify-js() {
 }
 
 if [[ "$1" == "--help" || $1 == "" ]]; then
-  echo "hallo"
+  cat << EOF
+$0 [OPTIONS] file
+
+Minify a javascript file using terser. The minified version will overwrite the
+original one. This script also takes care of correctly composing the sourcemaps.
+
+Example:
+- $0 ./dist/js/index.js
+
+Options:
+--help    show this help
+EOF
 else
   minify-js $@
 fi
