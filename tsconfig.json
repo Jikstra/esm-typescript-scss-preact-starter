@@ -16,6 +16,7 @@
     // Enable source maps for debugging  
     "sourceMap": true,
     "sourceRoot": "/js/",
+    "inlineSources": true,
 
     "composite": true,
     "incremental": true,
